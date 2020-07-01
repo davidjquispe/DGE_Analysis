@@ -1,0 +1,15 @@
+term_ID	description
+GO:0003735	structural constituent of ribosome
+GO:0004871	signal transducer activity
+GO:0004872	receptor activity
+GO:0005198	structural molecule activity
+GO:0005215	transporter activity
+GO:0008135	translation factor activity, RNA binding
+GO:0022891	substrate-specific transmembrane transporter activity
+GO:0060089	molecular transducer activity
+GO:0003723	RNA binding
+GO:0003743	translation initiation factor activity
+GO:0030594	neurotransmitter receptor activity
+GO:0008565	protein transporter activity
+GO:0046943	carboxylic acid transmembrane transporter activity
+GO:0005342	organic acid transmembrane transporter activity

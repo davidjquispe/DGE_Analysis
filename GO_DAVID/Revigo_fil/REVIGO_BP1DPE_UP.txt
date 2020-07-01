@@ -1,0 +1,48 @@
+term_ID	description
+GO:0022613	ribonucleoprotein complex biogenesis
+GO:0034660	ncRNA metabolic process
+GO:0051345	positive regulation of hydrolase activity
+GO:0071840	cellular component organization or biogenesis
+GO:1990542	mitochondrial transmembrane transport
+GO:0006807	nitrogen compound metabolic process
+GO:0006457	protein folding
+GO:0044237	cellular metabolic process
+GO:0043170	macromolecule metabolic process
+GO:0071704	organic substance metabolic process
+GO:0044238	primary metabolic process
+GO:0006413	translational initiation
+GO:0046483	heterocycle metabolic process
+GO:1901360	organic cyclic compound metabolic process
+GO:0010467	gene expression
+GO:1902582	single-organism intracellular transport
+GO:0006725	cellular aromatic compound metabolic process
+GO:0006839	mitochondrial transport
+GO:0034641	cellular nitrogen compound metabolic process
+GO:0051246	regulation of protein metabolic process
+GO:0043603	cellular amide metabolic process
+GO:0019538	protein metabolic process
+GO:0009894	regulation of catabolic process
+GO:0016072	rRNA metabolic process
+GO:1901566	organonitrogen compound biosynthetic process
+GO:1901564	organonitrogen compound metabolic process
+GO:0010608	posttranscriptional regulation of gene expression
+GO:0044260	cellular macromolecule metabolic process
+GO:0044267	cellular protein metabolic process
+GO:0032268	regulation of cellular protein metabolic process
+GO:0006396	RNA processing
+GO:0044271	cellular nitrogen compound biosynthetic process
+GO:0071826	ribonucleoprotein complex subunit organization
+GO:0016070	RNA metabolic process
+GO:0007005	mitochondrion organization
+GO:0017038	protein import
+GO:0034248	regulation of cellular amide metabolic process
+GO:0032543	mitochondrial translation
+GO:0000469	cleavage involved in rRNA processing
+GO:0090304	nucleic acid metabolic process
+GO:0090501	RNA phosphodiester bond hydrolysis
+GO:0006139	nucleobase-containing compound metabolic process
+GO:0000470	maturation of LSU-rRNA
+GO:0044085	cellular component biogenesis
+GO:0070585	protein localization to mitochondrion
+GO:0006412	translation
+GO:0071806	protein transmembrane transport

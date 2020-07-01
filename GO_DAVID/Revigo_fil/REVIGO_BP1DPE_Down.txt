@@ -1,0 +1,10 @@
+term_ID	description
+GO:0002376	immune system process
+GO:0007155	cell adhesion
+GO:0022610	biological adhesion
+GO:0032501	multicellular organismal process
+GO:0044699	single-organism process
+GO:0046394	carboxylic acid biosynthetic process
+GO:0044763	single-organism cellular process
+GO:0006082	organic acid metabolic process
+GO:0044283	small molecule biosynthetic process

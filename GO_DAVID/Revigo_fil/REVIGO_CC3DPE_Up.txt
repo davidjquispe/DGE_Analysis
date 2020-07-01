@@ -1,0 +1,20 @@
+term_ID	description
+GO:0005576	extracellular region
+GO:0005615	extracellular space
+GO:0022624	proteasome accessory complex
+GO:0031974	membrane-enclosed lumen
+GO:0032991	macromolecular complex
+GO:0005730	nucleolus
+GO:0044424	intracellular part
+GO:0005732	small nucleolar ribonucleoprotein complex
+GO:0043228	non-membrane-bounded organelle
+GO:1990904	ribonucleoprotein complex
+GO:0042555	MCM complex
+GO:0030684	preribosome
+GO:0005697	telomerase holoenzyme complex
+GO:0031429	box H/ACA snoRNP complex
+GO:0005758	mitochondrial intermembrane space
+GO:0043234	protein complex
+GO:0043232	intracellular non-membrane-bounded organelle
+GO:0031970	organelle envelope lumen
+GO:0030529	intracellular ribonucleoprotein complex

@@ -1,0 +1,44 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0005576,"extracellular region",2.375%,-5.288,-5.286,5.369,-2.9536,0.954,0.000,5576,0
+GO:0032991,"macromolecular complex",14.008%,-0.437,-5.700,6.139,-2.4966,0.959,0.000,32991,0
+GO:0044421,"extracellular region part",1.309%,-2.752,-5.701,5.110,-1.7296,0.918,0.000,44421,0
+GO:0005615,"extracellular space",0.538%,null,null,4.724,-1.6948,0.918,0.764,44421,1
+GO:0070469,"respiratory chain",0.296%, 5.893,-0.318,4.465,-1.6999,0.926,0.000,70469,0
+GO:0098798,"mitochondrial protein complex",0.289%,-3.766, 4.482,4.454,-6.8279,0.392,0.000,98798,0
+GO:0098800,"inner mitochondrial membrane protein complex",0.235%,null,null,4.364,-4.6566,0.357,0.820,98798,1
+GO:0031966,"mitochondrial membrane",0.817%,null,null,4.905,-2.0947,0.437,0.944,98798,1
+GO:0098803,"respiratory chain complex",0.159%,null,null,4.193,-1.8157,0.641,0.868,98798,1
+GO:0044455,"mitochondrial membrane part",0.382%,null,null,4.575,-4.4823,0.463,0.765,98798,1
+GO:0019866,"organelle inner membrane",0.660%,null,null,4.813,-2.4908,0.488,0.888,98798,1
+GO:0005743,"mitochondrial inner membrane",0.623%,null,null,4.787,-2.1630,0.444,0.896,98798,1
+GO:0005746,"mitochondrial respiratory chain",0.098%,null,null,3.983,-2.4981,0.476,0.854,98798,1
+GO:0044429,"mitochondrial part",1.203%,null,null,5.073,-1.6694,0.482,0.731,98798,1
+GO:0005740,"mitochondrial envelope",0.901%,null,null,4.948,-2.6671,0.445,0.850,98798,1
+GO:0031975,"envelope",2.324%, 6.107, 2.565,5.359,-2.9697,0.852,0.064,31975,0
+GO:0044459,"plasma membrane part",2.405%, 3.006,-3.202,5.374,-2.4398,0.781,0.082,44459,0
+GO:0071944,"cell periphery",11.583%, 4.948, 4.340,6.057,-1.6407,0.832,0.105,71944,0
+GO:0044444,"cytoplasmic part",12.659%, 0.270, 2.880,6.095,-1.4778,0.682,0.252,44444,0
+GO:0030684,"preribosome",0.223%,-5.705, 2.680,4.342,-3.3094,0.617,0.283,30684,0
+GO:0043228,"non-membrane-bounded organelle",8.408%,-1.129, 8.244,5.918,-1.6442,0.695,0.299,43228,0
+GO:1990904,"ribonucleoprotein complex",5.291%,-7.178, 2.062,5.717,-3.7207,0.678,0.385,1990904,0
+GO:0005737,"cytoplasm",26.017%, 1.064, 2.794,6.408,-1.0812,0.707,0.389,5737,0
+GO:0070069,"cytochrome complex",0.097%,-6.762, 0.343,3.978,-1.0387,0.713,0.402,70069,0
+GO:0005730,"nucleolus",0.664%,-0.789, 6.465,4.815,-3.3160,0.553,0.405,5730,0
+GO:0032040,"small-subunit processome",0.108%,-5.916, 2.280,4.027,-1.5007,0.635,0.430,32040,0
+GO:0022626,"cytosolic ribosome",0.187%,-4.172, 4.094,4.265,-1.3823,0.500,0.449,22626,0
+GO:0022627,"cytosolic small ribosomal subunit",0.078%,null,null,3.887,-1.1881,0.494,0.786,22626,1
+GO:0031967,"organelle envelope",1.258%,-1.181, 6.678,5.093,-2.9697,0.494,0.468,31967,0
+GO:0005887,"integral component of plasma membrane",1.211%, 2.757,-3.699,5.076,-2.4394,0.777,0.495,5887,0
+GO:0031226,"intrinsic component of plasma membrane",1.299%,null,null,5.106,-2.4394,0.776,0.831,5887,1
+GO:0031090,"organelle membrane",2.003%,-1.692, 8.011,5.295,-1.5177,0.610,0.516,31090,0
+GO:0098796,"membrane protein complex",2.473%,-6.871, 1.433,5.386,-2.8961,0.620,0.538,98796,0
+GO:0000502,"proteasome complex",0.389%,-5.172, 1.259,4.583,-1.8157,0.569,0.556,502,0
+GO:0022624,"proteasome accessory complex",0.083%,null,null,3.910,-1.9895,0.609,0.874,502,1
+GO:0005838,"proteasome regulatory particle",0.073%,null,null,3.858,-1.5007,0.611,0.866,502,1
+GO:0016469,"proton-transporting two-sector ATPase complex",0.663%,-6.907, 1.007,4.814,-1.1886,0.641,0.590,16469,0
+GO:0005840,"ribosome",4.198%,-3.442, 3.861,5.616,-2.1327,0.383,0.600,5840,0
+GO:0044391,"ribosomal subunit",1.110%,null,null,5.038,-1.1476,0.405,0.726,5840,1
+GO:0043232,"intracellular non-membrane-bounded organelle",7.946%,null,null,5.893,-1.6442,0.548,0.795,5840,1
+GO:0030529,"intracellular ribonucleoprotein complex",5.291%,null,null,5.717,-3.7207,0.509,0.911,5840,1
+GO:0005886,"plasma membrane",10.510%, 2.933,-2.337,6.015,-1.5996,0.758,0.637,5886,0
+GO:0044452,"nucleolar part",0.153%,-0.295, 6.951,4.177,-1.0088,0.597,0.642,44452,0

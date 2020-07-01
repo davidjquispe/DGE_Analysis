@@ -1,0 +1,47 @@
+term_ID	description
+GO:0006457	protein folding
+GO:0006807	nitrogen compound metabolic process
+GO:0007155	cell adhesion
+GO:0022610	biological adhesion
+GO:0042254	ribosome biogenesis
+GO:1902582	single-organism intracellular transport
+GO:0006091	generation of precursor metabolites and energy
+GO:0010467	gene expression
+GO:0046034	ATP metabolic process
+GO:0007268	chemical synaptic transmission
+GO:0022900	electron transport chain
+GO:0043603	cellular amide metabolic process
+GO:0019725	cellular homeostasis
+GO:0016072	rRNA metabolic process
+GO:1990542	mitochondrial transmembrane transport
+GO:0006839	mitochondrial transport
+GO:0055114	oxidation-reduction process
+GO:1901564	organonitrogen compound metabolic process
+GO:0006417	regulation of translation
+GO:0007200	phospholipase C-activating G-protein coupled receptor signaling pathway
+GO:0072521	purine-containing compound metabolic process
+GO:0055085	transmembrane transport
+GO:0034660	ncRNA metabolic process
+GO:0007006	mitochondrial membrane organization
+GO:0010608	posttranscriptional regulation of gene expression
+GO:0034641	cellular nitrogen compound metabolic process
+GO:0071826	ribonucleoprotein complex subunit organization
+GO:0051493	regulation of cytoskeleton organization
+GO:0017038	protein import
+GO:0034248	regulation of cellular amide metabolic process
+GO:1901566	organonitrogen compound biosynthetic process
+GO:0006413	translational initiation
+GO:0006811	ion transport
+GO:1902600	hydrogen ion transmembrane transport
+GO:0033750	ribosome localization
+GO:0006818	hydrogen transport
+GO:0006123	mitochondrial electron transport, cytochrome c to oxygen
+GO:0044085	cellular component biogenesis
+GO:0071166	ribonucleoprotein complex localization
+GO:0070585	protein localization to mitochondrion
+GO:0000028	ribosomal small subunit assembly
+GO:0006518	peptide metabolic process
+GO:0071806	protein transmembrane transport
+GO:0000470	maturation of LSU-rRNA
+GO:0034220	ion transmembrane transport
+GO:0051130	positive regulation of cellular component organization

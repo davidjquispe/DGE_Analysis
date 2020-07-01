@@ -1,0 +1,25 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0003735,"structural constituent of ribosome",2.679%, 2.217,-7.802,5.577,-1.8377,0.917,0.000,3735,0
+GO:0004871,"signal transducer activity",2.778%, 0.903, 3.289,5.592,-1.1026,0.917,0.000,4871,0
+GO:0004872,"receptor activity",2.694%,-3.808, 4.219,5.579,-2.2623,0.605,0.000,4872,0
+GO:0004930,"G-protein coupled receptor activity",0.632%,null,null,4.949,-1.5183,0.620,0.934,4872,1
+GO:0004888,"transmembrane signaling receptor activity",0.962%,null,null,5.132,-1.4501,0.611,0.850,4872,1
+GO:0038023,"signaling receptor activity",2.150%,null,null,5.481,-1.6551,0.610,0.942,4872,1
+GO:0099600,"transmembrane receptor activity",1.024%,null,null,5.159,-1.4864,0.627,0.857,4872,1
+GO:0005198,"structural molecule activity",3.268%, 1.280, 6.872,5.663,-1.9823,0.918,0.000,5198,0
+GO:0005215,"transporter activity",8.494%,-6.438,-0.214,6.078,-1.4878,0.922,0.000,5215,0
+GO:0008135,"translation factor activity, RNA binding",0.909%,-3.114,-4.543,5.107,-2.3861,0.845,0.000,8135,0
+GO:0022891,"substrate-specific transmembrane transporter activity",4.536%, 6.098,-2.057,5.805,-2.4666,0.442,0.000,22891,0
+GO:0022857,"transmembrane transporter activity",5.870%,null,null,5.917,-1.8633,0.493,0.775,22891,1
+GO:0022892,"substrate-specific transporter activity",5.046%,null,null,5.852,-2.5757,0.499,0.742,22891,1
+GO:0015075,"ion transmembrane transporter activity",3.726%,null,null,5.720,-1.1439,0.444,0.889,22891,1
+GO:0022804,"active transmembrane transporter activity",2.834%,null,null,5.601,-1.1856,0.483,0.802,22891,1
+GO:0015078,"hydrogen ion transmembrane transporter activity",0.926%,null,null,5.115,-1.2224,0.485,0.868,22891,1
+GO:0015077,"monovalent inorganic cation transmembrane transporter activity",1.394%,null,null,5.293,-1.2789,0.470,0.770,22891,1
+GO:0060089,"molecular transducer activity",2.707%, 5.525, 5.020,5.581,-2.2623,0.917,0.000,60089,0
+GO:0003723,"RNA binding",5.283%,-2.576,-5.672,5.871,-1.6747,0.869,0.320,3723,0
+GO:0003743,"translation initiation factor activity",0.411%,-3.728,-4.676,4.762,-1.3541,0.847,0.546,3743,0
+GO:0030594,"neurotransmitter receptor activity",0.114%,-4.059, 3.794,4.207,-1.0377,0.665,0.676,30594,0
+GO:0008565,"protein transporter activity",0.518%, 5.778,-2.579,4.863,-1.6552,0.533,0.679,8565,0
+GO:0046943,"carboxylic acid transmembrane transporter activity",0.594%, 5.531,-1.795,4.923,-1.0075,0.511,0.690,46943,0
+GO:0005342,"organic acid transmembrane transporter activity",0.597%, 6.171,-1.439,4.924,-1.0075,0.516,0.690,5342,0

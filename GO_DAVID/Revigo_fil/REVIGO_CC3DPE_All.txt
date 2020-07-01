@@ -1,0 +1,27 @@
+term_ID	description
+GO:0005576	extracellular region
+GO:0032991	macromolecular complex
+GO:0044421	extracellular region part
+GO:0070469	respiratory chain
+GO:0098798	mitochondrial protein complex
+GO:0031975	envelope
+GO:0044459	plasma membrane part
+GO:0071944	cell periphery
+GO:0044444	cytoplasmic part
+GO:0030684	preribosome
+GO:0043228	non-membrane-bounded organelle
+GO:1990904	ribonucleoprotein complex
+GO:0005737	cytoplasm
+GO:0070069	cytochrome complex
+GO:0005730	nucleolus
+GO:0032040	small-subunit processome
+GO:0022626	cytosolic ribosome
+GO:0031967	organelle envelope
+GO:0005887	integral component of plasma membrane
+GO:0031090	organelle membrane
+GO:0098796	membrane protein complex
+GO:0000502	proteasome complex
+GO:0016469	proton-transporting two-sector ATPase complex
+GO:0005840	ribosome
+GO:0005886	plasma membrane
+GO:0044452	nucleolar part

@@ -1,0 +1,24 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0005576,"extracellular region",2.375%, 1.660,-4.241,5.369,-2.2193,0.913,0.000,5576,0
+GO:0005615,"extracellular space",0.538%, 5.157,-3.323,4.724,-3.2114,0.847,0.000,5615,0
+GO:0044421,"extracellular region part",1.309%,null,null,5.110,-2.6853,0.847,0.764,5615,1
+GO:0022624,"proteasome accessory complex",0.083%, 4.634, 3.263,3.910,-2.5614,0.535,0.000,22624,0
+GO:0005838,"proteasome regulatory particle",0.073%,null,null,3.858,-1.5668,0.538,0.772,22624,1
+GO:0000502,"proteasome complex",0.389%,null,null,4.583,-2.0688,0.498,0.874,22624,1
+GO:0031974,"membrane-enclosed lumen",2.742%,-5.362,-1.897,5.431,-1.1968,0.914,0.000,31974,0
+GO:0032991,"macromolecular complex",14.008%,-1.767,-3.920,6.139,-3.0959,0.923,0.000,32991,0
+GO:0005730,"nucleolus",0.664%,-2.923, 6.095,4.815,-2.3656,0.560,0.110,5730,0
+GO:0044424,"intracellular part",35.654%,-2.472, 1.179,6.545,-1.2638,0.774,0.173,44424,0
+GO:0005732,"small nucleolar ribonucleoprotein complex",0.072%, 4.344, 6.328,3.852,-1.7301,0.582,0.236,5732,0
+GO:0043228,"non-membrane-bounded organelle",8.408%,-4.948, 5.683,5.918,-1.5367,0.750,0.332,43228,0
+GO:1990904,"ribonucleoprotein complex",5.291%, 5.564, 4.902,5.717,-3.9073,0.590,0.337,1990904,0
+GO:0042555,"MCM complex",0.057%, 6.167, 3.509,3.750,-1.0509,0.655,0.353,42555,0
+GO:0030684,"preribosome",0.223%, 3.935, 5.206,4.342,-1.5604,0.556,0.417,30684,0
+GO:0005697,"telomerase holoenzyme complex",0.025%, 1.227, 6.339,3.393,-1.0509,0.516,0.505,5697,0
+GO:0031429,"box H/ACA snoRNP complex",0.019%, 0.753, 5.869,3.269,-1.0509,0.416,0.543,31429,0
+GO:0072588,"box H/ACA RNP complex",0.019%,null,null,3.269,-1.0509,0.485,0.966,31429,1
+GO:0005758,"mitochondrial intermembrane space",0.084%,-3.625, 6.930,3.919,-1.5668,0.634,0.578,5758,0
+GO:0043234,"protein complex",6.419%, 5.530, 5.400,5.800,-1.1452,0.585,0.595,43234,0
+GO:0043232,"intracellular non-membrane-bounded organelle",7.946%,-2.613, 4.874,5.893,-1.5367,0.618,0.601,43232,0
+GO:0031970,"organelle envelope lumen",0.089%,-3.302, 7.340,3.941,-1.5668,0.633,0.613,31970,0
+GO:0030529,"intracellular ribonucleoprotein complex",5.291%, 2.925, 4.919,5.717,-3.9073,0.460,0.616,30529,0

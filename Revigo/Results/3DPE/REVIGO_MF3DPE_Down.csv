@@ -1,0 +1,14 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0004871,"signal transducer activity",2.778%,-3.369, 6.282,5.592,-1.9254,0.845,0.000,4871,0
+GO:0004872,"receptor activity",2.694%,-6.770,-0.563,5.579,-4.6526,0.278,0.000,4872,0
+GO:0004930,"G-protein coupled receptor activity",0.632%,null,null,4.949,-3.3307,0.307,0.934,4872,1
+GO:0004888,"transmembrane signaling receptor activity",0.962%,null,null,5.132,-3.0379,0.293,0.850,4872,1
+GO:0038023,"signaling receptor activity",2.150%,null,null,5.481,-2.5537,0.285,0.942,4872,1
+GO:0099600,"transmembrane receptor activity",1.024%,null,null,5.159,-2.8423,0.310,0.857,4872,1
+GO:0052689,"carboxylic ester hydrolase activity",0.623%, 4.537,-2.740,4.943,-1.0680,0.831,0.000,52689,0
+GO:0060089,"molecular transducer activity",2.707%,-3.266,-7.344,5.581,-4.6526,0.844,0.000,60089,0
+GO:1901618,"organic hydroxy compound transmembrane transporter activity",0.044%, 1.579,-6.213,3.792,-1.0898,0.840,0.000,1901618,0
+GO:0004497,"monooxygenase activity",0.947%, 1.493, 5.223,5.125,-1.0069,0.831,0.029,4497,0
+GO:0016491,"oxidoreductase activity",12.783%, 4.503, 1.795,6.255,-1.6020,0.847,0.043,16491,0
+GO:0005044,"scavenger receptor activity",0.041%,-6.309, 0.089,3.762,-1.3945,0.406,0.615,5044,0
+GO:0038024,"cargo receptor activity",0.046%,-6.293,-1.190,3.810,-1.3945,0.403,0.621,38024,0

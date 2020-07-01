@@ -1,0 +1,10 @@
+term_ID	description
+GO:0004871	signal transducer activity
+GO:0004872	receptor activity
+GO:0052689	carboxylic ester hydrolase activity
+GO:0060089	molecular transducer activity
+GO:1901618	organic hydroxy compound transmembrane transporter activity
+GO:0004497	monooxygenase activity
+GO:0016491	oxidoreductase activity
+GO:0005044	scavenger receptor activity
+GO:0038024	cargo receptor activity

@@ -1,0 +1,34 @@
+term_ID	description
+GO:0005623	cell
+GO:0031974	membrane-enclosed lumen
+GO:0032991	macromolecular complex
+GO:0070013	intracellular organelle lumen
+GO:0031975	envelope
+GO:0030684	preribosome
+GO:0044424	intracellular part
+GO:0000502	proteasome complex
+GO:0005622	intracellular
+GO:1990351	transporter complex
+GO:0044444	cytoplasmic part
+GO:0005739	mitochondrion
+GO:0030687	preribosome, large subunit precursor
+GO:0044422	organelle part
+GO:0005852	eukaryotic translation initiation factor 3 complex
+GO:0033290	eukaryotic 48S preinitiation complex
+GO:0070993	translation preinitiation complex
+GO:0000313	organellar ribosome
+GO:0005737	cytoplasm
+GO:1990904	ribonucleoprotein complex
+GO:0045259	proton-transporting ATP synthase complex
+GO:0071013	catalytic step 2 spliceosome
+GO:0043228	non-membrane-bounded organelle
+GO:0044429	mitochondrial part
+GO:0031967	organelle envelope
+GO:0005840	ribosome
+GO:0044428	nuclear part
+GO:0043231	intracellular membrane-bounded organelle
+GO:0005758	mitochondrial intermembrane space
+GO:0031970	organelle envelope lumen
+GO:0015934	large ribosomal subunit
+GO:0005761	mitochondrial ribosome
+GO:0044452	nucleolar part

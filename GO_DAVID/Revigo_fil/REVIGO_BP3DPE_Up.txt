@@ -1,0 +1,37 @@
+term_ID	description
+GO:0006457	protein folding
+GO:0022613	ribonucleoprotein complex biogenesis
+GO:0051246	regulation of protein metabolic process
+GO:0071806	protein transmembrane transport
+GO:0006807	nitrogen compound metabolic process
+GO:0043170	macromolecule metabolic process
+GO:0006396	RNA processing
+GO:0030155	regulation of cell adhesion
+GO:0030334	regulation of cell migration
+GO:0006839	mitochondrial transport
+GO:0044260	cellular macromolecule metabolic process
+GO:0042981	regulation of apoptotic process
+GO:0034641	cellular nitrogen compound metabolic process
+GO:0051336	regulation of hydrolase activity
+GO:0006413	translational initiation
+GO:0043603	cellular amide metabolic process
+GO:0048522	positive regulation of cellular process
+GO:0048518	positive regulation of biological process
+GO:0009894	regulation of catabolic process
+GO:0019538	protein metabolic process
+GO:0009451	RNA modification
+GO:0010608	posttranscriptional regulation of gene expression
+GO:0010467	gene expression
+GO:0034470	ncRNA processing
+GO:0044267	cellular protein metabolic process
+GO:0032268	regulation of cellular protein metabolic process
+GO:0034660	ncRNA metabolic process
+GO:0032231	regulation of actin filament bundle assembly
+GO:0034248	regulation of cellular amide metabolic process
+GO:0042273	ribosomal large subunit biogenesis
+GO:0000470	maturation of LSU-rRNA
+GO:0044085	cellular component biogenesis
+GO:0006412	translation
+GO:0017038	protein import
+GO:0065002	intracellular protein transmembrane transport
+GO:0006626	protein targeting to mitochondrion

@@ -1,0 +1,70 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0022613,"ribonucleoprotein complex biogenesis",1.614%, 1.341,-7.799,5.316,-7.8915,0.740,0.000,22613,0
+GO:0042273,"ribosomal large subunit biogenesis",0.151%,null,null,4.287,-2.6137,0.737,0.755,22613,1
+GO:0042274,"ribosomal small subunit biogenesis",0.255%,null,null,4.515,-2.1208,0.728,0.794,22613,1
+GO:0001731,"formation of translation preinitiation complex",0.070%,null,null,3.954,-1.9422,0.546,0.863,22613,1
+GO:0042254,"ribosome biogenesis",1.422%,null,null,5.261,-5.9680,0.698,0.715,22613,1
+GO:0022618,"ribonucleoprotein complex assembly",0.364%,null,null,4.669,-1.9501,0.685,0.823,22613,1
+GO:0006364,"rRNA processing",0.952%,null,null,5.087,-4.8170,0.509,0.912,22613,1
+GO:0030490,"maturation of SSU-rRNA",0.104%,null,null,4.124,-2.4943,0.581,0.730,22613,1
+GO:0000462,"maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)",0.066%,null,null,3.928,-2.4943,0.593,0.839,22613,1
+GO:0034660,"ncRNA metabolic process",3.407%, 6.529,-0.722,5.641,-4.6110,0.710,0.000,34660,0
+GO:0051345,"positive regulation of hydrolase activity",0.559%,-2.471,-4.423,4.856,-1.1777,0.922,0.000,51345,0
+GO:0071840,"cellular component organization or biogenesis",8.568%,-5.285,-3.860,6.041,-3.4619,0.973,0.000,71840,0
+GO:1990542,"mitochondrial transmembrane transport",0.079%,-4.066, 3.518,4.006,-2.4943,0.845,0.000,1990542,0
+GO:0072655,"establishment of protein localization to mitochondrion",0.116%,null,null,4.172,-1.5528,0.744,0.993,1990542,1
+GO:0030150,"protein import into mitochondrial matrix",0.036%,null,null,3.668,-1.3738,0.577,0.916,1990542,1
+GO:0006626,"protein targeting to mitochondrion",0.108%,null,null,4.143,-1.5528,0.560,0.901,1990542,1
+GO:0006807,"nitrogen compound metabolic process",38.744%,-4.968,-2.874,6.696,-2.5654,0.931,0.032,6807,0
+GO:0006457,"protein folding",0.903%,-4.341,-1.202,5.064,-1.3218,0.929,0.040,6457,0
+GO:0044237,"cellular metabolic process",53.061%, 3.226, 6.877,6.833,-1.3522,0.874,0.088,44237,0
+GO:0043170,"macromolecule metabolic process",39.491%, 1.769, 4.887,6.705,-2.0707,0.863,0.104,43170,0
+GO:0071704,"organic substance metabolic process",58.357%,-5.716,-0.389,6.874,-1.2500,0.927,0.119,71704,0
+GO:0044238,"primary metabolic process",53.743%,-5.037, 0.583,6.839,-1.1790,0.928,0.120,44238,0
+GO:0006413,"translational initiation",0.518%, 5.405,-2.860,4.823,-3.0384,0.673,0.164,6413,0
+GO:0046483,"heterocycle metabolic process",29.664%, 5.483, 5.446,6.580,-1.3036,0.835,0.176,46483,0
+GO:1901360,"organic cyclic compound metabolic process",30.324%, 1.461, 5.711,6.590,-1.1569,0.870,0.211,1901360,0
+GO:0010467,"gene expression",19.671%, 2.333, 0.195,6.402,-3.2679,0.798,0.225,10467,0
+GO:1902582,"single-organism intracellular transport",0.500%,-3.166, 4.469,4.807,-2.2653,0.760,0.230,1902582,0
+GO:1902580,"single-organism cellular localization",0.690%,null,null,4.947,-1.1853,0.770,0.742,1902582,1
+GO:0006605,"protein targeting",0.694%,null,null,4.949,-1.1571,0.737,0.805,1902582,1
+GO:0065002,"intracellular protein transmembrane transport",0.276%,null,null,4.549,-1.7281,0.743,0.731,1902582,1
+GO:0044743,"intracellular protein transmembrane import",0.097%,null,null,4.094,-1.7281,0.753,0.814,1902582,1
+GO:0006725,"cellular aromatic compound metabolic process",29.628%, 4.995, 5.485,6.580,-1.2471,0.835,0.245,6725,0
+GO:0006839,"mitochondrial transport",0.182%,-3.493, 3.647,4.369,-2.0786,0.886,0.246,6839,0
+GO:0034641,"cellular nitrogen compound metabolic process",34.137%, 6.737, 2.270,6.641,-2.9607,0.734,0.261,34641,0
+GO:0051246,"regulation of protein metabolic process",1.551%, 1.133,-2.841,5.299,-1.7079,0.772,0.292,51246,0
+GO:0043603,"cellular amide metabolic process",6.879%, 7.901, 1.802,5.946,-2.2038,0.772,0.310,43603,0
+GO:0019538,"protein metabolic process",18.489%, 2.378, 0.693,6.375,-1.3006,0.799,0.339,19538,0
+GO:0009894,"regulation of catabolic process",0.146%,-2.089,-4.928,4.272,-1.1693,0.893,0.350,9894,0
+GO:0016072,"rRNA metabolic process",0.965%, 7.212,-2.082,5.093,-4.8170,0.700,0.385,16072,0
+GO:0034470,"ncRNA processing",2.222%,null,null,5.455,-3.8058,0.650,0.773,16072,1
+GO:1901566,"organonitrogen compound biosynthetic process",14.064%, 7.814, 0.361,6.256,-2.3336,0.722,0.391,1901566,0
+GO:1901564,"organonitrogen compound metabolic process",17.886%, 7.460, 1.563,6.361,-1.3134,0.770,0.415,1901564,0
+GO:0010608,"posttranscriptional regulation of gene expression",0.719%, 2.157,-3.988,4.965,-1.2791,0.769,0.416,10608,0
+GO:0044260,"cellular macromolecule metabolic process",34.276%, 4.112, 2.052,6.643,-2.3306,0.736,0.417,44260,0
+GO:0044267,"cellular protein metabolic process",14.293%, 3.754,-0.092,6.263,-1.4957,0.716,0.450,44267,0
+GO:0032268,"regulation of cellular protein metabolic process",1.473%, 2.365,-2.943,5.277,-1.4381,0.717,0.453,32268,0
+GO:0006417,"regulation of translation",0.692%,null,null,4.948,-1.2791,0.624,0.893,32268,1
+GO:0006446,"regulation of translational initiation",0.091%,null,null,4.067,-1.0273,0.672,0.731,32268,1
+GO:0006396,"RNA processing",3.210%, 6.083,-1.359,5.615,-2.4905,0.688,0.453,6396,0
+GO:0044271,"cellular nitrogen compound biosynthetic process",22.502%, 7.131, 1.046,6.460,-1.4730,0.713,0.456,44271,0
+GO:0071826,"ribonucleoprotein complex subunit organization",0.377%, 0.279,-7.600,4.685,-1.9501,0.757,0.463,71826,0
+GO:0016070,"RNA metabolic process",15.951%, 5.516, 0.317,6.311,-1.6492,0.659,0.464,16070,0
+GO:0007005,"mitochondrion organization",0.418%, 0.935,-7.829,4.729,-1.9501,0.756,0.468,7005,0
+GO:0017038,"protein import",0.257%,-2.879, 4.968,4.518,-2.0786,0.783,0.479,17038,0
+GO:0034248,"regulation of cellular amide metabolic process",0.700%, 4.936,-3.588,4.954,-1.1693,0.695,0.488,34248,0
+GO:0032543,"mitochondrial translation",0.068%, 3.556,-4.890,3.941,-1.0273,0.600,0.502,32543,0
+GO:0000469,"cleavage involved in rRNA processing",0.053%, 4.871,-5.228,3.830,-1.1777,0.596,0.536,469,0
+GO:0090304,"nucleic acid metabolic process",21.449%, 5.359, 0.762,6.440,-1.3816,0.661,0.577,90304,0
+GO:0090501,"RNA phosphodiester bond hydrolysis",0.748%, 7.574,-1.776,4.982,-1.0273,0.745,0.594,90501,0
+GO:0006139,"nucleobase-containing compound metabolic process",26.547%, 6.057, 1.566,6.532,-1.2947,0.685,0.597,6139,0
+GO:0000470,"maturation of LSU-rRNA",0.047%, 4.482,-5.465,3.779,-1.0273,0.607,0.606,470,0
+GO:0044085,"cellular component biogenesis",4.355%, 0.772,-7.681,5.747,-3.1881,0.760,0.619,44085,0
+GO:0070585,"protein localization to mitochondrion",0.116%,-2.687, 5.176,4.174,-1.5528,0.758,0.633,70585,0
+GO:0072594,"establishment of protein localization to organelle",0.492%,null,null,4.801,-1.1571,0.734,0.840,70585,1
+GO:0006412,"translation",5.686%, 5.033,-1.373,5.863,-2.8270,0.579,0.661,6412,0
+GO:0006518,"peptide metabolic process",5.961%,null,null,5.884,-2.2346,0.651,0.895,6412,1
+GO:0043604,"amide biosynthetic process",6.374%,null,null,5.913,-2.4873,0.662,0.887,6412,1
+GO:0043043,"peptide biosynthetic process",5.770%,null,null,5.869,-2.7674,0.645,0.927,6412,1
+GO:0071806,"protein transmembrane transport",0.525%,-3.103, 4.850,4.829,-1.7281,0.782,0.661,71806,0

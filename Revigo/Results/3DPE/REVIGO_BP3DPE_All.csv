@@ -1,0 +1,101 @@
+term_ID,description,frequency,plot_X,plot_Y,plot_size,log10 p-value,uniqueness,dispensability,representative,eliminated
+GO:0006457,"protein folding",0.903%,-1.661, 2.360,5.064,-2.5727,0.945,0.000,6457,0
+GO:0006807,"nitrogen compound metabolic process",38.744%,-4.884, 5.106,6.696,-1.6191,0.963,0.000,6807,0
+GO:0007155,"cell adhesion",0.544%,-4.859, 6.147,4.844,-1.5437,0.980,0.000,7155,0
+GO:0022610,"biological adhesion",0.550%,-3.409, 4.766,4.849,-1.9158,0.980,0.000,22610,0
+GO:0042254,"ribosome biogenesis",1.422%, 1.183, 6.455,5.261,-3.3013,0.807,0.000,42254,0
+GO:0042273,"ribosomal large subunit biogenesis",0.151%,null,null,4.287,-1.0765,0.832,0.755,42254,1
+GO:0042274,"ribosomal small subunit biogenesis",0.255%,null,null,4.515,-2.5684,0.826,0.794,42254,1
+GO:0022613,"ribonucleoprotein complex biogenesis",1.614%,null,null,5.316,-3.5309,0.830,0.715,42254,1
+GO:0022618,"ribonucleoprotein complex assembly",0.364%,null,null,4.669,-1.2205,0.788,0.823,42254,1
+GO:0006364,"rRNA processing",0.952%,null,null,5.087,-2.0282,0.648,0.912,42254,1
+GO:1902582,"single-organism intracellular transport",0.500%,-5.716,-2.403,4.807,-2.8661,0.572,0.000,1902582,0
+GO:0006605,"protein targeting",0.694%,null,null,4.949,-1.3761,0.612,0.805,1902582,1
+GO:0000054,"ribosomal subunit export from nucleus",0.037%,null,null,3.673,-1.3583,0.575,0.933,1902582,1
+GO:0006886,"intracellular protein transport",1.199%,null,null,5.187,-1.1212,0.598,0.874,1902582,1
+GO:0044743,"intracellular protein transmembrane import",0.097%,null,null,4.094,-1.9987,0.593,0.814,1902582,1
+GO:0033753,"establishment of ribosome localization",0.037%,null,null,3.673,-1.3583,0.687,1.000,1902582,1
+GO:0071426,"ribonucleoprotein complex export from nucleus",0.097%,null,null,4.093,-1.4057,0.657,0.928,1902582,1
+GO:1902580,"single-organism cellular localization",0.690%,null,null,4.947,-1.2950,0.579,0.742,1902582,1
+GO:0071428,"rRNA-containing ribonucleoprotein complex export from nucleus",0.040%,null,null,3.716,-1.3583,0.675,0.940,1902582,1
+GO:0046907,"intracellular transport",1.564%,null,null,5.302,-1.1502,0.609,0.937,1902582,1
+GO:0065002,"intracellular protein transmembrane transport",0.276%,null,null,4.549,-1.9987,0.616,0.731,1902582,1
+GO:0006913,"nucleocytoplasmic transport",0.237%,null,null,4.483,-1.3719,0.640,0.722,1902582,1
+GO:0051168,"nuclear export",0.119%,null,null,4.184,-1.3719,0.656,0.943,1902582,1
+GO:0051169,"nuclear transport",0.239%,null,null,4.486,-1.3719,0.658,0.722,1902582,1
+GO:0006091,"generation of precursor metabolites and energy",1.940%,-1.092,-2.226,5.396,-1.0385,0.916,0.038,6091,0
+GO:0010467,"gene expression",19.671%, 1.699,-2.465,6.402,-1.1351,0.908,0.054,10467,0
+GO:0046034,"ATP metabolic process",1.263%, 4.160,-3.262,5.210,-2.6305,0.576,0.084,46034,0
+GO:0046128,"purine ribonucleoside metabolic process",1.996%,null,null,5.408,-1.0343,0.590,0.925,46034,1
+GO:0042278,"purine nucleoside metabolic process",2.005%,null,null,5.410,-1.0343,0.597,0.904,46034,1
+GO:0009205,"purine ribonucleoside triphosphate metabolic process",1.366%,null,null,5.244,-1.5727,0.612,0.971,46034,1
+GO:0006119,"oxidative phosphorylation",0.250%,null,null,4.507,-1.1962,0.613,0.817,46034,1
+GO:0022904,"respiratory electron transport chain",0.367%,null,null,4.673,-1.1962,0.792,0.878,46034,1
+GO:0009116,"nucleoside metabolic process",2.917%,null,null,5.573,-1.1218,0.584,0.947,46034,1
+GO:0009119,"ribonucleoside metabolic process",2.521%,null,null,5.510,-1.2867,0.590,0.852,46034,1
+GO:0009123,"nucleoside monophosphate metabolic process",2.367%,null,null,5.482,-1.8698,0.626,0.748,46034,1
+GO:0009126,"purine nucleoside monophosphate metabolic process",1.916%,null,null,5.391,-1.7114,0.615,0.944,46034,1
+GO:0009144,"purine nucleoside triphosphate metabolic process",1.401%,null,null,5.255,-1.4454,0.614,0.957,46034,1
+GO:0009141,"nucleoside triphosphate metabolic process",1.605%,null,null,5.314,-1.3283,0.640,0.771,46034,1
+GO:0009161,"ribonucleoside monophosphate metabolic process",2.267%,null,null,5.464,-1.8698,0.608,0.944,46034,1
+GO:0009167,"purine ribonucleoside monophosphate metabolic process",1.915%,null,null,5.390,-1.7114,0.610,0.932,46034,1
+GO:0042773,"ATP synthesis coupled electron transport",0.221%,null,null,4.452,-1.4057,0.606,0.807,46034,1
+GO:0042775,"mitochondrial ATP synthesis coupled electron transport",0.069%,null,null,3.949,-1.2282,0.637,0.892,46034,1
+GO:0009199,"ribonucleoside triphosphate metabolic process",1.458%,null,null,5.272,-1.5727,0.613,0.946,46034,1
+GO:0007268,"chemical synaptic transmission",0.187%, 2.015, 2.713,4.381,-1.1962,0.815,0.175,7268,0
+GO:0098916,"anterograde trans-synaptic signaling",0.187%,null,null,4.381,-1.1962,0.815,0.998,7268,1
+GO:0099537,"trans-synaptic signaling",0.188%,null,null,4.382,-1.1962,0.815,0.998,7268,1
+GO:0099536,"synaptic signaling",0.188%,null,null,4.383,-1.1962,0.820,0.873,7268,1
+GO:0022900,"electron transport chain",0.564%, 2.675, 0.663,4.860,-1.1967,0.796,0.196,22900,0
+GO:0043603,"cellular amide metabolic process",6.879%, 2.335,-6.517,5.946,-4.5113,0.824,0.201,43603,0
+GO:0019725,"cellular homeostasis",1.253%, 5.517, 2.213,5.206,-1.2591,0.819,0.214,19725,0
+GO:0016072,"rRNA metabolic process",0.965%, 4.310,-4.361,5.093,-2.0282,0.799,0.216,16072,0
+GO:0034470,"ncRNA processing",2.222%,null,null,5.455,-1.6109,0.771,0.773,16072,1
+GO:1990542,"mitochondrial transmembrane transport",0.079%,-4.916,-3.380,4.006,-2.5098,0.773,0.230,1990542,0
+GO:0072655,"establishment of protein localization to mitochondrion",0.116%,null,null,4.172,-1.6657,0.650,0.993,1990542,1
+GO:0030150,"protein import into mitochondrial matrix",0.036%,null,null,3.668,-1.3583,0.512,0.916,1990542,1
+GO:0006626,"protein targeting to mitochondrion",0.108%,null,null,4.143,-1.6657,0.528,0.901,1990542,1
+GO:0006839,"mitochondrial transport",0.182%,-6.289, 0.323,4.369,-1.8262,0.807,0.246,6839,0
+GO:0055114,"oxidation-reduction process",15.060%,-1.503,-6.069,6.286,-1.6237,0.838,0.251,55114,0
+GO:1901564,"organonitrogen compound metabolic process",17.886%, 1.864,-6.625,6.361,-3.6423,0.838,0.264,1901564,0
+GO:0006417,"regulation of translation",0.692%, 5.293,-1.461,4.948,-1.1962,0.745,0.302,6417,0
+GO:0007200,"phospholipase C-activating G-protein coupled receptor signaling pathway",0.019%, 5.209, 3.845,3.385,-1.0147,0.882,0.338,7200,0
+GO:0072521,"purine-containing compound metabolic process",2.673%, 4.213,-5.345,5.535,-1.0024,0.776,0.354,72521,0
+GO:0055085,"transmembrane transport",8.916%,-6.444,-1.670,6.058,-1.9941,0.728,0.371,55085,0
+GO:0034660,"ncRNA metabolic process",3.407%, 3.351,-4.691,5.641,-1.7852,0.793,0.385,34660,0
+GO:0007006,"mitochondrial membrane organization",0.065%, 1.653, 5.689,3.922,-1.3583,0.764,0.388,7006,0
+GO:0010608,"posttranscriptional regulation of gene expression",0.719%, 6.273, 1.627,4.965,-1.1962,0.885,0.400,10608,0
+GO:0034641,"cellular nitrogen compound metabolic process",34.137%, 2.738,-6.271,6.641,-1.9430,0.810,0.415,34641,0
+GO:0071826,"ribonucleoprotein complex subunit organization",0.377%, 0.405, 6.522,4.685,-1.2205,0.830,0.457,71826,0
+GO:0051493,"regulation of cytoskeleton organization",0.232%, 2.827, 5.352,4.474,-1.2282,0.810,0.478,51493,0
+GO:0017038,"protein import",0.257%,-6.178,-2.765,4.518,-2.6117,0.667,0.479,17038,0
+GO:0034248,"regulation of cellular amide metabolic process",0.700%, 5.983,-0.815,4.954,-1.0236,0.792,0.502,34248,0
+GO:1901566,"organonitrogen compound biosynthetic process",14.064%, 3.627,-5.508,6.256,-3.6381,0.762,0.506,1901566,0
+GO:0006413,"translational initiation",0.518%, 5.574,-2.981,4.823,-1.1962,0.768,0.528,6413,0
+GO:0006811,"ion transport",5.344%,-6.524,-1.177,5.836,-1.5111,0.742,0.535,6811,0
+GO:1902600,"hydrogen ion transmembrane transport",1.015%,-5.713,-3.281,5.115,-1.5437,0.634,0.546,1902600,0
+GO:0015992,"proton transport",1.148%,null,null,5.168,-1.5437,0.640,0.975,1902600,1
+GO:0098662,"inorganic cation transmembrane transport",1.858%,null,null,5.377,-1.1456,0.692,0.861,1902600,1
+GO:0015672,"monovalent inorganic cation transport",1.824%,null,null,5.369,-1.1456,0.711,0.772,1902600,1
+GO:0006754,"ATP biosynthetic process",0.432%,null,null,4.743,-1.2282,0.604,0.970,1902600,1
+GO:0015985,"energy coupled proton transport, down electrochemical gradient",0.411%,null,null,4.722,-1.2282,0.659,0.876,1902600,1
+GO:0015986,"ATP synthesis coupled proton transport",0.411%,null,null,4.722,-1.2282,0.398,0.876,1902600,1
+GO:0033750,"ribosome localization",0.037%,-5.453,-0.649,3.673,-1.3583,0.700,0.577,33750,0
+GO:0006818,"hydrogen transport",1.149%,-6.298,-2.587,5.168,-1.5437,0.689,0.596,6818,0
+GO:0044765,"single-organism transport",5.708%,null,null,5.865,-1.1541,0.640,0.726,6818,1
+GO:0006123,"mitochondrial electron transport, cytochrome c to oxygen",0.007%, 3.856,-2.713,2.929,-1.3583,0.688,0.605,6123,0
+GO:0044085,"cellular component biogenesis",4.355%, 0.743, 6.266,5.747,-1.3738,0.840,0.608,44085,0
+GO:0071166,"ribonucleoprotein complex localization",0.097%,-6.085,-0.447,4.094,-1.4057,0.691,0.623,71166,0
+GO:0070585,"protein localization to mitochondrion",0.116%,-5.695,-1.387,4.174,-1.6657,0.660,0.633,70585,0
+GO:0072594,"establishment of protein localization to organelle",0.492%,null,null,4.801,-1.3761,0.621,0.840,70585,1
+GO:0000028,"ribosomal small subunit assembly",0.020%, 0.895, 6.569,3.409,-1.3583,0.831,0.636,28,0
+GO:0006518,"peptide metabolic process",5.961%, 4.754,-4.749,5.884,-4.8562,0.722,0.641,6518,0
+GO:0006412,"translation",5.686%,null,null,5.863,-4.1974,0.704,0.877,6518,1
+GO:0043604,"amide biosynthetic process",6.374%,null,null,5.913,-3.8352,0.761,0.895,6518,1
+GO:0043043,"peptide biosynthetic process",5.770%,null,null,5.869,-4.0633,0.719,0.927,6518,1
+GO:0071806,"protein transmembrane transport",0.525%,-6.071,-2.054,4.829,-1.9987,0.702,0.661,71806,0
+GO:0000470,"maturation of LSU-rRNA",0.047%, 3.479, 2.994,3.779,-1.5076,0.719,0.681,470,0
+GO:0034220,"ion transmembrane transport",3.528%,-5.530,-3.046,5.656,-1.1626,0.691,0.699,34220,0
+GO:0006812,"cation transport",3.242%,null,null,5.619,-1.0730,0.706,0.819,34220,1
+GO:0098660,"inorganic ion transmembrane transport",2.317%,null,null,5.473,-1.1826,0.696,0.780,34220,1
+GO:0051130,"positive regulation of cellular component organization",0.374%, 3.005, 5.170,4.681,-1.0436,0.812,0.700,51130,0

@@ -1,0 +1,682 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+Differential Gene Expression Data of Early Stages of Intestine Regeneration in Holothuria glaberrima
+===============================================================================
+
+**Authors:** *Joshua Medina, David Quispe* | 2020
+
+```{r, echo=FALSE, message=FALSE, cache=FALSE}
+library(BiocStyle)
+knitr::opts_chunk$set(error=FALSE, message=FALSE, warning=FALSE)
+```
+
+# Overview
+
+The sea cucumber _Holothuria glaberrima_ has great regenerative capability after internal organs evisceration. In this case, we are analyzing data from mesentery regenerative tissue of 1 and 3 days post evisceration (1- and 3-DPE) in order to further understand the genes that are involved in the early stages of regeneration.
+
+***
+
+# Process
+
+Set the directory to work in and load required libraries.
+
+```{r}
+
+setwd("D:/usuarios/david/Escritorio/Tesis/results/DESeq_protocol/DESeq_newprotocol/GitDESeq/")
+
+suppressMessages(library(DESeq2))
+suppressMessages(library(gplots))
+suppressMessages(library(RColorBrewer))
+suppressMessages(library(EnhancedVolcano))
+suppressMessages(library(tidyverse))
+suppressMessages(library(ggplot2))
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyverse))
+suppressMessages(library(RColorBrewer))
+suppressMessages(library(calibrate))
+suppressMessages(library(dichromat))
+suppressMessages(library(IDPmisc))
+suppressMessages(library(limma))
+suppressMessages(library(cowplot))
+suppressMessages(library(ggrepel))
+suppressMessages(library(pheatmap))
+suppressMessages(library(GO.db))
+suppressMessages(library(GSEABase))
+suppressMessages(library(GOstats))
+suppressMessages(library(GOplot))
+suppressMessages(library(stargazer))
+```
+
+
+# Cluster analysis
+
+***
+
+
+* The next analysis comprises count files generated with clustering of similar transcripts using Corset which hierarchically clusters the transcripts based on the distribution of shared reads and expression patterns. 
+
+```{r}
+cts<-read.table("data/counts_corset.txt", header = TRUE)
+cts<- cts[,c(7,8,9,1,2,3,4,5,6)]
+coldata<-read.table("data/pdata_corset.txt", row.names = 1)
+```
+
+
+
+
+Gene expression quantification.
+
+```{r}
+ddsSTAR_cluster<-DESeqDataSetFromMatrix(countData = cts, colData = coldata, design = ~ condition)
+```
+
+
+
+
+Setting Control as the reference level.
+
+```{r}
+colData(ddsSTAR_cluster)$condition <- factor(colData(ddsSTAR_cluster)$condition, levels=levels(coldata$condition))
+```
+
+
+
+
+Filtering files with low count number.
+
+```{r}
+keep_cluster <- rowSums(counts(ddsSTAR_cluster)) >= 30 #Eliminates rows from the samples that have less than 30 counts in the sum of their 3 biological replicates 
+ddsSTAR_cluster <- ddsSTAR_cluster[keep_cluster,]
+```
+
+
+
+
+Size factor estimation and dispersion. Generation of count table.
+
+```{r}
+dds_cluster <- estimateSizeFactors(ddsSTAR_cluster)
+dds_cluster <- estimateDispersions(dds_cluster)
+dds_cluster <- nbinomWaldTest(dds_cluster)
+counts_table_cluster <- counts(dds_cluster, normalized=TRUE)
+```
+
+
+
+Contrasts between conditions (1DPE vs Normal; 3DPE vs Normal).
+
+```{r}
+res_1DPE_2 <- results(dds_cluster, contrast = c("condition", "1DPE", "Control"))
+res_1DPE_2 <- res_1DPE_2[order(res_1DPE_2$padj),]
+
+res_3DPE_2 <- results(dds_cluster, contrast = c("condition", "3DPE", "Control"))
+res_3DPE_2 <- res_3DPE_2[order(res_3DPE_2$padj),]
+```
+
+
+
+
+Assigning names to the clusters
+
+```{r}
+File_1DPE_clus<-as.data.frame(res_1DPE_2)
+File_1DPE_clus<-tibble::rownames_to_column(File_1DPE_clus, "ID")
+File_3DPE_clus<-as.data.frame(res_3DPE_2)
+File_3DPE_clus<-tibble::rownames_to_column(File_3DPE_clus, "ID")
+
+#Change cluster names with representative Trinity IDs and add protein names
+Clusters<-read.delim("data/clusters.txt", header = FALSE, sep = "\t")
+GeneNames<-read.csv("data/Genes_infotags.csv")
+GeneNames$s_name<- as.character(GeneNames$s_name)
+GeneNames$NCBI<- sapply(strsplit(GeneNames$s_name, split = " "), "[", 1)
+load("data/Final_NameMap.rda")
+
+File_1DPE_clusName<- File_1DPE_clus %>% left_join(Clusters, by = c("ID"="V2"))
+File_3DPE_clusName<- File_3DPE_clus %>% left_join(Clusters, by = c("ID"="V2"))
+
+tableComb1DPE_clus<-File_1DPE_clusName %>% left_join(Final_NameMap, by=c("V1"="Old_Name"))
+tableComb3DPE_clus<-File_3DPE_clusName %>% left_join(Final_NameMap, by=c("V1"="Old_Name"))
+Final1DPE_clus<-tableComb1DPE_clus %>% left_join(GeneNames, by=c("value"="q_name"))
+Final3DPE_clus<-tableComb3DPE_clus %>% left_join(GeneNames, by=c("value"="q_name"))
+
+```
+
+
+
+
+Eliminating repeats by separating annotated and non annotated transcripts. After separation, distinct() allows to obtain the individual transcripts without losing information. 
+
+```{r}
+Final1DPE_clus2<-Final1DPE_clus[is.na(Final1DPE_clus$X10),]
+Names1DPE_clus<-Final1DPE_clus[!is.na(Final1DPE_clus$X10),]
+Final1DPE_clus3<-distinct(Final1DPE_clus2,Final1DPE_clus2$ID.x, .keep_all = TRUE)
+Names1DPE_clus<-Names1DPE_clus[order(Names1DPE_clus$E),]
+Names1DPE_clus2<-Names1DPE_clus %>% distinct(Names1DPE_clus$ID.x, .keep_all = TRUE)
+pre_finaldis1<-rbind(Names1DPE_clus2[,c(1:7,28,34,37,41,45,50)],Final1DPE_clus3[,c(1:7,28,34,37,41,45,50)])
+Final1DPE_clus_dis<-distinct(pre_finaldis1, pre_finaldis1$ID.x, .keep_all = TRUE)
+Final1DPE_clus_dis<-Final1DPE_clus_dis[,c(-4,-5,-14)]
+colnames(Final1DPE_clus_dis)<-c("ID","baseMean","log2FoldChange","pvalue","padj","NCBI","GeneID","Protein","Synonyms","Description","Other_designations")
+Final1DPE_clus_dis<-Final1DPE_clus_dis[order(Final1DPE_clus_dis$padj),]
+
+Final3DPE_clus2<-Final3DPE_clus[is.na(Final3DPE_clus$X10),]
+Names3DPE_clus<-Final3DPE_clus[!is.na(Final3DPE_clus$X10),]
+Final3DPE_clus3<-distinct(Final3DPE_clus2,Final3DPE_clus2$ID.x, .keep_all = TRUE)
+Names3DPE_clus<-Names3DPE_clus[order(Names3DPE_clus$E),]
+Names3DPE_clus2<-Names3DPE_clus %>% distinct(Names3DPE_clus$ID.x, .keep_all = TRUE)
+pre_finaldis3<-rbind(Names3DPE_clus2[,c(1:7,28,34,37,41,45,50)],Final3DPE_clus3[,c(1:7,28,34,37,41,45,50)])
+Final3DPE_clus_dis<-distinct(pre_finaldis3, pre_finaldis3$ID.x, .keep_all = TRUE)
+Final3DPE_clus_dis<-Final3DPE_clus_dis[,c(-4,-5,-14)]
+colnames(Final3DPE_clus_dis)<-c("ID","baseMean","log2FoldChange","pvalue","padj","NCBI","GeneID","Protein","Synonyms","Description","Other_designations")
+Final3DPE_clus_dis<-Final3DPE_clus_dis[order(Final3DPE_clus_dis$padj),]
+
+```
+
+
+
+Plotting dispersion estimates.
+
+```{r}
+DESeq2::plotDispEsts(dds_cluster,main="Dispersion Plot")
+```
+
+
+
+
+Comparison of Raw Data vs normalized counts.
+
+```{r}
+conds <- as.vector(coldata$condition)
+condcols <- brewer.pal(n = length(unique(conds)), name="Dark2") 
+par(mfrow=c(1,2))
+barplot(colSums(counts(dds_cluster, normalized=F)), col = condcols[as.factor(conds)], las = 2, cex.names=0.6, main="Raw Counts")
+barplot(colSums(counts(dds_cluster, normalized=T)), col=condcols[as.factor(conds)], las=2, cex.names = 0.6, main = "Normalized Counts")
+```
+
+
+
+
+PCA plot.
+
+```{r}
+vsd_cluster <- varianceStabilizingTransformation(dds_cluster)
+DESeq2::plotPCA(vsd_cluster)+theme_bw()
+```
+
+
+
+
+Volcano plot of Normal vs 1DPE.
+
+
+```{r}
+volcano_dat1<- Final1DPE_clus_dis[(Final1DPE_clus_dis$padj <= 0.05) & (!is.na(Final1DPE_clus_dis$padj)) & (abs(Final1DPE_clus_dis$log2FoldChange) >= 0),]
+
+keyvals <- ifelse(volcano_dat1$log2FoldChange < -2, 'blue', ifelse(volcano_dat1$log2FoldChange > 2, 'red', 'black'))
+keyvals[is.na(keyvals)] <- 'black'
+names(keyvals)[keyvals == 'red'] <- 'Up'
+names(keyvals)[keyvals == 'black'] <- 'Mid'
+names(keyvals)[keyvals == 'blue'] <- 'Down'
+
+
+EnhancedVolcano(volcano_dat1, lab = volcano_dat1$Description, selectLab = c(NA), x = 'log2FoldChange', xlab = bquote(~Log[2]~ "Fold Change"),ylab =bquote(~-Log[10]~ "AdjPval"), y = 'padj', pCutoff = 5e-2, FCcutoff = 2, colCustom = keyvals, transcriptPointSize = 1, colAlpha = 1, legendPosition = 'right', legendLabSize = 12, legendIconSize = 4.0, gridlines.major = TRUE, gridlines.minor = FALSE)
+
+```
+
+
+
+Volcano plot of Normal vs 3DPE.
+
+
+```{r}
+volcano_dat2<- Final3DPE_clus_dis[(Final3DPE_clus_dis$padj <= 0.05) & (!is.na(Final3DPE_clus_dis$padj)) & (abs(Final3DPE_clus_dis$log2FoldChange) >= 0),]
+
+keyvals2 <- ifelse(volcano_dat2$log2FoldChange < -2, 'blue', ifelse(volcano_dat2$log2FoldChange > 2, 'red', 'black'))
+keyvals2[is.na(keyvals2)] <- 'black'
+names(keyvals2)[keyvals2 == 'red'] <- 'Up'
+names(keyvals2)[keyvals2 == 'black'] <- 'Mid'
+names(keyvals2)[keyvals2 == 'blue'] <- 'Down'
+
+EnhancedVolcano(volcano_dat2, lab = volcano_dat2$Description, selectLab = c(NA), x = 'log2FoldChange', xlab = bquote(~Log[2]~ "Fold Change"),ylab =bquote(~-Log[10]~ "AdjPval"), y = 'padj', pCutoff = 5e-2, FCcutoff = 2, colCustom = keyvals2, transcriptPointSize = 1, colAlpha = 1, legendPosition = 'right', legendLabSize = 12, legendIconSize = 4.0, gridlines.major = TRUE, gridlines.minor = FALSE)
+```
+
+
+
+Venn Diagram
+
+```{r}
+
+contigs_1DPE.venn<-Final1DPE_clus_dis[,c(1,3,5)]
+hits_1DPE<-rownames(contigs_1DPE.venn[(contigs_1DPE.venn$padj <= 0.05) & (!is.na(contigs_1DPE.venn$padj)) & (abs(contigs_1DPE.venn$log2FoldChange) >= 2),])
+
+
+contigs_3DPE.venn<-Final3DPE_clus_dis[,c(1,3,5)]
+hits_3DPE<-rownames(contigs_3DPE.venn[(contigs_3DPE.venn$padj <= 0.05) & (!is.na(contigs_3DPE.venn$padj)) & (abs(contigs_3DPE.venn$log2FoldChange) >= 2),])
+
+input_venn <- list(hits_1DPE, hits_3DPE)
+names(input_venn) <- c("1DPE", "3DPE")
+venn(input_venn)
+```
+
+
+Venn Diagram upregulated
+```{r}
+hits_1DPE.UP<-rownames(contigs_1DPE.venn[(contigs_1DPE.venn$padj <= 0.05) & (!is.na(contigs_1DPE.venn$padj)) & (contigs_1DPE.venn$log2FoldChange >= 2),])
+hits_3DPE.UP<-rownames(contigs_3DPE.venn[(contigs_3DPE.venn$padj <= 0.05) & (!is.na(contigs_3DPE.venn$padj)) & (contigs_3DPE.venn$log2FoldChange >= 2),])
+
+input_venn.UP <- list(hits_1DPE.UP, hits_3DPE.UP)
+names(input_venn.UP) <- c("1DPE", "3DPE")
+venn(input_venn.UP)
+
+```
+
+Venn Diagram downregulated
+```{r}
+hits_1DPE.DOWN<-rownames(contigs_1DPE.venn[(contigs_1DPE.venn$padj <= 0.05) & (!is.na(contigs_1DPE.venn$padj)) & (contigs_1DPE.venn$log2FoldChange <= -2),])
+hits_3DPE.DOWN<-rownames(contigs_3DPE.venn[(contigs_3DPE.venn$padj <= 0.05) & (!is.na(contigs_3DPE.venn$padj)) & (contigs_3DPE.venn$log2FoldChange <= -2),])
+
+input_venn.DOWN <- list(hits_1DPE.DOWN, hits_3DPE.DOWN)
+names(input_venn.DOWN) <- c("1DPE", "3DPE")
+venn(input_venn.DOWN)
+```
+
+
+Barplot format of Venn Diagrams
+
+```{r}
+Stage<-c("Day1","Day1", "Day3", "Day3", "Both", "Both")
+Expression<-c("Up-reg","Down-reg","Up-reg","Down-reg","Up-reg","Down-reg")
+Counts<-c(2377,3172,2455,2850,1208,1703)
+
+venn<-data.frame(Stage,Expression,Counts)
+
+venn$Stage<- factor(venn$Stage, levels = c("Day1", "Day3", "Both"))
+levels(venn$Expression) <-  c("Down", "Up")
+levels(venn$Stage) <-  c("Day1", "Day3", "Both")
+
+
+mycolors <- c("Up" = "red",
+                 "Down"  = "blue")  
+
+
+ggplot(data=venn, aes(x=Stage, y = Counts,  fill = reorder(Expression, desc(Expression)))) + geom_bar(stat="identity") + scale_fill_manual(values = mycolors) + labs(y = "Total DEGs", x = "") +geom_text(position = "stack", aes(x=Stage, y = Counts,  label = Counts, hjust = 0.5, vjust=1, fontface="bold")) +theme_minimal() + theme(legend.title = element_blank())
+```
+
+
+
+Heatmap of transcription factors
+
+```{r}
+tf_1DPE<-Final1DPE_clus_dis[grep("transcription fact", Final1DPE_clus_dis$Protein), ]
+
+tf_1DPE<-distinct(tf_1DPE,tf_1DPE$Description, .keep_all = TRUE)
+
+tf_1DPE<-tf_1DPE[order(-tf_1DPE$log2FoldChange),]
+
+tf_names_1DPE<-tf_1DPE$ID[c(1:15)]
+
+tf_names<-c(tf_names_1DPE,'Cluster-41392.1', 'Cluster-40855.2','Cluster-3567.45288', 'Cluster-36720.3','Cluster-3567.10388') #aqui se pueden agregar mas transcriptos para que salgan en el heatmap
+
+names_cont1<-Final1DPE_clus_dis[Final1DPE_clus_dis$ID %in% tf_names,c(1,8:11)]
+
+names_cont1$Description.y<-gsub("thyroid transcription factor 1-associated protein 26 homolog","thyroid transcription factor",names_cont1$Description)
+
+Transcripts<-names_cont1$ID
+names_row<-names_cont1$Description
+
+heatmap_dat<-assay(vsd_cluster[c(print(Transcripts))])
+rownames(heatmap_dat)<-names_row
+heatmap_dat2<-log(heatmap_dat)
+
+heatmap.2(heatmap_dat2, trace='none', cexRow = 0.8,  cexCol = 1.3, las=2, Colv = FALSE, dendrogram='row', key=TRUE, margins=c(3,15), col = bluered(100), srtCol=360, labCol = c("","Normal","","","Day 1","","", "Day 3",""), adjCol = c(0.4,0.5))
+
+```
+
+
+
+Gene Ontology
+
+```{r}
+#Separate all GeneIDs of annotated transcripts
+universe_1DPE<-distinct(Final1DPE_clus_dis, Final1DPE_clus_dis$GeneID, .keep_all = TRUE)
+#Separate all significant transcripts that are upregulated or downregulated.
+genes_1DPEAll_padj0.05<-universe_1DPE[(universe_1DPE$padj <= 0.05) & (!is.na(universe_1DPE$GeneID)),]
+genes_1DPEUp_padj0.05<-universe_1DPE[(universe_1DPE$padj <= 0.05) & (!is.na(universe_1DPE$GeneID)) & (universe_1DPE$log2FoldChange >= 2),]
+genes_1DPEDown_padj0.05<-universe_1DPE[(universe_1DPE$padj <= 0.05) & (!is.na(universe_1DPE$GeneID)) & (universe_1DPE$log2FoldChange <= -2),]
+write(na.omit(universe_1DPE$GeneID), "GeneIDs/universe_1DPE.txt", sep = "\n")
+write(na.omit(genes_1DPEAll_padj0.05$GeneID), "GeneIDs/geneIDs_1DPEAll.txt", sep = "\n")
+write(na.omit(genes_1DPEUp_padj0.05$GeneID), "GeneIDs/geneIDs_1DPEUp.txt", sep = "\n")
+write(na.omit(genes_1DPEDown_padj0.05$GeneID), "GeneIDs/geneIDs_1DPEDown.txt", sep = "\n")
+
+
+universe_3DPE<-distinct(Final3DPE_clus_dis, Final3DPE_clus_dis$GeneID, .keep_all = TRUE)
+genes_3DPEAll_padj0.05<-universe_3DPE[(universe_3DPE$padj <= 0.05) & (!is.na(universe_3DPE$GeneID)),]
+genes_3DPEUp_padj0.05<-universe_3DPE[(universe_3DPE$padj <= 0.05) & (!is.na(universe_3DPE$GeneID)) & (universe_3DPE$log2FoldChange >= 2),]
+genes_3DPEDown_padj0.05<-universe_3DPE[(universe_3DPE$padj <= 0.05) & (!is.na(universe_3DPE$GeneID)) & (universe_3DPE$log2FoldChange <= -2),]
+write(na.omit(universe_3DPE$GeneID), "GeneIDs/universe_3DPE.txt", sep = "\n")
+write(na.omit(genes_3DPEAll_padj0.05$GeneID), "GeneIDs/geneIDs_3DPEAll.txt", sep = "\n")
+write(na.omit(genes_3DPEUp_padj0.05$GeneID), "GeneIDs/geneIDs_3DPEUp.txt", sep = "\n")
+write(na.omit(genes_3DPEDown_padj0.05$GeneID), "GeneIDs/geneIDs_3DPEDown.txt", sep = "\n")
+
+
+#Tables were submitted to DAVID, results in GO_DAVID/1DPE and GO_DAVID/3DPE 
+
+```
+
+
+Make function to produce al tables for revigo after DAVID analysis.
+Note: There was a problem with the names, so each time you want to use the functions, you have to move the files to the working directory and change the file.path to generate the resrults in another directory
+
+```{r}
+#Function to generate all the files to submit to Revigo
+
+generate_table<- function(filename) {
+  dat<-read.delim(file = filename, header = TRUE, sep = "\t")
+  dat2<-str_split(dat$Term, pattern = "[~]")
+  dat$Term<-sapply(dat2, "[", 1)
+  dat$Description<-sapply(dat2, "[", 2)
+  dat<-dat[,c(2,5)]
+  file<-gsub(".txt","", filename)
+  myfile <- file.path("Revigo", paste0(file, ".txt"))
+  write.table(dat, file = myfile, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+
+#Function to grab all the files to be applied with the other functions (files need to be in the working directory)
+
+analyze_all<- function(pattern){
+  list<-list.files(pattern = pattern, full.names = FALSE)
+  for (i in list){
+    FilterRev(i)
+  }
+}
+
+
+analyze_all("GO")
+
+#Results in Revigo/preRevigo_1DPE and Revigo/preRevigo_3DPE
+#Results obtained from Revigo are in Revigo/Results
+```
+
+
+Join tables from Revigo with DAVID results
+
+```{r}
+#Function to extract the terms that were simplified with Revigo
+
+FilterRev<-function(filename){
+  dat<-read.csv(filename)
+  dat2<-dat[(dat$eliminated == 0),1:2]
+  file<-gsub(".csv","", filename)
+  myfile <- file.path("Revigo_fil", paste0(file, ".txt"))
+  write.table(dat2, file = myfile, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+analyze_all<- function(pattern){
+  list<-list.files(pattern = pattern, full.names = FALSE)
+  for (i in list){
+    FilterRev(i)
+  }
+}
+
+
+analyze_all("REVIGO")
+
+#Results in Revigo/Revigo_fil
+
+
+
+#Function to join Revigo file with simplified terms and original GO file to only obtain the results with the simplified terms of Revigo and the results of DAVID
+
+JoinGOs<-function(GO, Revigo){
+  GOdat<-read.delim(file = GO, header = TRUE, sep = "\t")
+  s<-str_split(GOdat$Term, pattern = "[~]")
+  GOdat$Term<-sapply(s, "[", 1)
+  Revdat<-read.delim(file = Revigo, header = TRUE, sep = "\t")
+  final<-GOdat %>% inner_join(Revdat, by=c("Term"="term_ID"))
+  file<-gsub(".txt","", GO)
+  myfile <- file.path("Final", paste0(file, "_Final", ".txt"))
+  write.table(final, file = myfile, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+#Here we have to go one by one changing the names of each file 
+JoinGOs("GO_MF3DPE_Down.txt","REVIGO_MF3DPE_Down.txt")
+
+#Results in Revigo/prefinal
+
+
+```
+
+
+
+After arranging everything, we can join the tables for all, Up and down analysis with their respective identifier BP, CC or MF of gene ontology.
+
+```{r}
+
+#Some files still have the GO ontology ID and term joined by "~", this function is to be used on those files
+
+separate_str<- function(filename) {
+  dat<-read.delim(file = filename, header = TRUE, sep = "\t")
+  dat2<-str_split(dat$Term, pattern = "[~]")
+  dat$Term<-sapply(dat2, "[", 1)
+  dat$Description<-sapply(dat2, "[", 2)
+  file<-gsub(".txt","", filename)
+  myfile <- file.path("Final", paste0(file, ".txt"))
+  write.table(dat, file = myfile, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+analyze_all<- function(pattern){
+  list<-list.files(pattern = pattern, full.names = FALSE)
+  for (i in list){
+    separate_str(i)
+  }
+}
+
+analyze_all("GO")
+
+
+#Function to change category of files
+
+CategorizeBP<-function(filename){
+  listBP<-read.delim(file = filename, header = TRUE, sep = "\t")
+  listBP$Category<-c("BP")
+  fileBP<-gsub(".txt","", filename)
+  myfileBP <- file.path("Final", paste0(fileBP, ".txt"))
+  write.table(listBP, file = myfileBP, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+
+CategorizeCC<-function(filename){
+  listCC<-read.delim(file = filename, header = TRUE, sep = "\t")
+  listCC$Category<-c("CC")
+  fileCC<-gsub(".txt","", filename)
+  myfileCC <- file.path("Final", paste0(fileCC, ".txt"))
+  write.table(listCC, file = myfileCC, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+CategorizeMF<-function(filename){
+  listMF<-read.delim(file = filename, header = TRUE, sep = "\t")
+  listMF$Category<-c("MF")
+  fileMF<-gsub(".txt","", filename)
+  myfileMF <- file.path("Final", paste0(fileMF, ".txt"))
+  write.table(listMF, file = myfileMF, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+
+analyze_all<- function(pattern){
+  list<-list.files(pattern = pattern, full.names = FALSE)
+  for (i in list){
+    CategorizeBP(i) #Remember to change the function after a set of files BP, CC or MF
+  }
+}
+
+analyze_all("GO")
+
+
+#Once we have all the files with their respective GO identifier, we join them manually
+
+Combinefiles<-function(file1,file2,file3){
+  i1<-read.delim(file = file1, header = TRUE, sep = "\t")
+  i2<-read.delim(file = file2, header = TRUE, sep = "\t")
+  i3<-read.delim(file = file3, header = TRUE, sep = "\t")
+  final<-rbind(i1,i2,i3)
+  file<-gsub("GO_BP","", file1)
+  myfile <- file.path("Results", paste0(file))
+  write.table(final, file = myfile, quote = FALSE, row.names = FALSE, sep = "\t")
+}
+
+#Results are in Results/GO
+
+```
+
+
+
+Generating Plots from GO (The file with combined upregulated and downregulated terms was not plotted)
+
+1 DPE
+
+Downregulated
+
+```{r}
+GO_1DPE_Down<-read.delim("Results/GO/1DPE_Down_Final.txt", header = TRUE, sep = "\t")
+
+GO_1DPE_Down$GeneRatio<-GO_1DPE_Down$Count/GO_1DPE_Down$Pop.Hits
+Normalizer1Down<-max(GO_1DPE_Down$Count)/max(GO_1DPE_Down$GeneRatio)
+
+GO_1DPE_Down2 <- GO_1DPE_Down[(GO_1DPE_Down$PValue <= 0.05),] %>% group_by(Category) %>% top_n(5) %>% ungroup() %>% arrange(Category, Count) %>% mutate(Position = n():1)  
+
+
+ggplot(data = GO_1DPE_Down2, aes(x = fct_reorder(Description, desc(Position)), y = GeneRatio, fill = Category)) + geom_col(data = GO_1DPE_Down2, aes(x = fct_reorder(Description, desc(Position)), y = Count/Normalizer1Down)) + scale_y_continuous(sec.axis = sec_axis(trans = ~.*Normalizer1Down, name = "Number of genes")) + theme(axis.text.x = element_text(angle = 70, hjust = 1, size = 7), axis.title.y = element_text(size = 8), legend.text = element_text(size = 7), legend.title = element_text(size = 8),legend.key.size =  unit(0.2, "in"), plot.title = element_text(size = 11, hjust = 0.5)) + labs(x = NULL, title = NULL)
+```
+
+Upregulated
+
+```{r}
+GO_1DPE_Up<-read.delim("Results/GO/1DPE_UP_Final.txt", header = TRUE, sep = "\t")
+
+GO_1DPE_Up$GeneRatio<-GO_1DPE_Up$Count/GO_1DPE_Up$Pop.Hits
+Normalizer1Up<-max(GO_1DPE_Up$Count)/max(GO_1DPE_Up$GeneRatio)
+
+GO_1DPE_Up2 <- GO_1DPE_Up[(GO_1DPE_Up$PValue <= 0.05),] %>% group_by(Category) %>% top_n(5) %>% ungroup() %>% arrange(Category, Count) %>% mutate(Position = n():1)  
+
+
+ggplot(data = GO_1DPE_Up2, aes(x = fct_reorder(Description, desc(Position)), y = GeneRatio, fill = Category)) + geom_col(data = GO_1DPE_Up2, aes(x = fct_reorder(Description, desc(Position)), y = Count/Normalizer1Up)) + scale_y_continuous(sec.axis = sec_axis(trans = ~.*Normalizer1Up, name = "Number of genes")) + theme(axis.text.x = element_text(angle = 70, hjust = 1, size = 7), axis.title.y = element_text(size = 8), legend.text = element_text(size = 7), legend.title = element_text(size = 8),legend.key.size =  unit(0.2, "in"), plot.title = element_text(size = 11, hjust = 0.5)) + labs(x = NULL, title = NULL)
+```
+
+
+3 DPE
+
+Downregulated
+
+```{r}
+GO_3DPE_Down<-read.delim("Results/GO/3DPE_Down_Final.txt", header = TRUE, sep = "\t")
+
+GO_3DPE_Down$GeneRatio<-GO_3DPE_Down$Count/GO_3DPE_Down$Pop.Hits
+Normalizer3Down<-max(GO_3DPE_Down$Count)/max(GO_3DPE_Down$GeneRatio)
+
+GO_3DPE_Down2 <- GO_3DPE_Down[(GO_3DPE_Down$PValue <= 0.05),] %>% group_by(Category) %>% top_n(5) %>% ungroup() %>% arrange(Category, Count) %>% mutate(Position = n():1)  
+
+ggplot(data = GO_3DPE_Down2, aes(x = fct_reorder(Description, desc(Position)), y = GeneRatio, fill = Category)) + geom_col(data = GO_3DPE_Down2, aes(x = fct_reorder(Description, desc(Position)), y = Count/Normalizer3Down)) + scale_y_continuous(sec.axis = sec_axis(trans = ~.*Normalizer3Down, name = "Number of genes")) + theme(axis.text.x = element_text(angle = 70, hjust = 1, size = 7), axis.title.y = element_text(size = 8), legend.text = element_text(size = 7), legend.title = element_text(size = 8),legend.key.size =  unit(0.2, "in"), plot.title = element_text(size = 11, hjust = 0.5)) + labs(x = NULL, title = NULL)
+```
+
+
+Upregulated
+
+```{r}
+GO_3DPE_Up<-read.delim("Results/GO/3DPE_UP_Final.txt", header = TRUE, sep = "\t")
+
+GO_3DPE_Up$GeneRatio<-GO_3DPE_Up$Count/GO_3DPE_Up$Pop.Hits
+Normalizer3Up<-max(GO_3DPE_Up$Count)/max(GO_3DPE_Up$GeneRatio)
+
+GO_3DPE_Up2 <- GO_3DPE_Up[(GO_3DPE_Up$PValue <= 0.05),] %>% group_by(Category) %>% top_n(5) %>% ungroup() %>% arrange(Category, Count) %>% mutate(Position = n():1)  
+
+ggplot(data = GO_3DPE_Up2, aes(x = fct_reorder(Description, desc(Position)), y = GeneRatio, fill = Category)) + geom_col(data = GO_3DPE_Up2, aes(x = fct_reorder(Description, desc(Position)), y = Count/Normalizer3Up)) + scale_y_continuous(sec.axis = sec_axis(trans = ~.*Normalizer3Up, name = "Number of genes")) + theme(axis.text.x = element_text(angle = 70, hjust = 1, size = 7), axis.title.y = element_text(size = 8), legend.text = element_text(size = 7), legend.title = element_text(size = 8),legend.key.size =  unit(0.2, "in"), plot.title = element_text(size = 11, hjust = 0.5)) + labs(x = NULL, title = NULL)
+```
+
+
+
+Pathway Enrichment 1DPE
+
+
+Pathway Enrichment Downregulated genes 1DPE
+
+```{r}
+#Filtering IDs with <0.05 of adjusted p-value
+keggIDs_1DPEDown_clus <- genes_1DPEDown_padj0.05$GeneID
+
+#Kegga command from limma package
+kegg_1DPEDown_clus<-kegga(keggIDs_1DPEDown_clus, species.KEGG = "spu")
+
+#Calculate GeneRation from DE and N
+kegg_1DPEDown_clus$GeneRatio<-kegg_1DPEDown_clus$DE/kegg_1DPEDown_clus$N
+colnames(kegg_1DPEDown_clus)<-c("Pathway","N","Count","Pvalue","GeneRatio")
+
+kegg_1DPEDown_clus<-filter(kegg_1DPEDown_clus, kegg_1DPEDown_clus$Pvalue<0.04)
+
+ggplot(kegg_1DPEDown_clus) + geom_col(aes(x=GeneRatio, y= reorder(Pathway, GeneRatio), fill=Pvalue)) + scale_fill_viridis_c(direction = -1,end = .7, option = "plasma") + ylab("") + theme_bw()
+```
+
+
+Pathway Enrichment Upregulated genes 1DPE 
+
+```{r}
+#Filtering IDs with <0.05 of adjusted p-value
+keggIDs_1DPEUp_clus <- genes_1DPEUp_padj0.05$GeneID
+
+#Kegga command from limma package
+kegg_1DPEUp_clus<-kegga(keggIDs_1DPEUp_clus, species.KEGG = "spu")
+
+#Calculate GeneRation from DE and N
+kegg_1DPEUp_clus$GeneRatio<-kegg_1DPEUp_clus$DE/kegg_1DPEUp_clus$N
+colnames(kegg_1DPEUp_clus)<-c("Pathway","N","Count","Pvalue","GeneRatio")
+
+kegg_1DPEUp_clus<-filter(kegg_1DPEUp_clus, kegg_1DPEUp_clus$Pvalue<0.05)
+
+ggplot(kegg_1DPEUp_clus) + geom_col(aes(x=GeneRatio, y= reorder(Pathway, GeneRatio), fill=Pvalue)) + scale_fill_viridis_c(direction = -1,end = .7, option = "plasma") + ylab("") + theme_bw()
+
+```
+
+
+Pathway Enrichment 3DPE
+
+
+Pathway enrichment analysis downregulated 3DPE
+
+```{r}
+#Filtering IDs with <0.05 of adjusted p-value
+keggIDs_3DPEDown_clus <- genes_3DPEDown_padj0.05$GeneID
+
+#Kegga command from limma package
+kegg_3DPEDown_clus<-kegga(keggIDs_3DPEDown_clus, species.KEGG = "spu")
+
+#Calculate GeneRation from DE and N
+kegg_3DPEDown_clus$GeneRatio<-kegg_3DPEDown_clus$DE/kegg_3DPEDown_clus$N
+colnames(kegg_3DPEDown_clus)<-c("Pathway","N","Count","Pvalue","GeneRatio")
+
+kegg_3DPEDown_clus<-filter(kegg_3DPEDown_clus, kegg_3DPEDown_clus$Pvalue<0.05)
+
+ggplot(kegg_3DPEDown_clus) + geom_col(aes(x=GeneRatio, y= reorder(Pathway, GeneRatio), fill=Pvalue)) + scale_fill_viridis_c(direction = -1,end = .7, option = "plasma") + ylab("") + theme_bw()
+```
+
+
+
+Pathway enrichment analysis upregulated 3DPE
+
+```{r}
+#Filtering IDs with <0.05 of adjusted p-value
+keggIDs_3DPEUp_clus <- genes_3DPEUp_padj0.05$GeneID
+
+#Kegga command from limma package
+kegg_3DPEUp_clus<-kegga(keggIDs_3DPEUp_clus, species.KEGG = "spu")
+
+#Calculate GeneRation from DE and N
+kegg_3DPEUp_clus$GeneRatio<-kegg_3DPEUp_clus$DE/kegg_3DPEUp_clus$N
+colnames(kegg_3DPEUp_clus)<-c("Pathway","N","Count","Pvalue","GeneRatio")
+
+kegg_3DPEUp_clus<-filter(kegg_3DPEUp_clus, kegg_3DPEUp_clus$Pvalue<0.05)
+
+ggplot(kegg_3DPEUp_clus) + geom_col(aes(x=GeneRatio, y= reorder(Pathway, GeneRatio), fill=Pvalue)) + scale_fill_viridis_c(direction = -1,end = .7, option = "plasma") + ylab("") + theme_bw()
+```
+

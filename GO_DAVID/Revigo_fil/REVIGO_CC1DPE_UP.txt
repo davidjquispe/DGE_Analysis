@@ -1,0 +1,29 @@
+term_ID	description
+GO:0005615	extracellular space
+GO:0005623	cell
+GO:0005730	nucleolus
+GO:0031974	membrane-enclosed lumen
+GO:0032991	macromolecular complex
+GO:0005622	intracellular
+GO:0030684	preribosome
+GO:0022624	proteasome accessory complex
+GO:0044424	intracellular part
+GO:0005852	eukaryotic translation initiation factor 3 complex
+GO:1990904	ribonucleoprotein complex
+GO:0005739	mitochondrion
+GO:0043228	non-membrane-bounded organelle
+GO:0005732	small nucleolar ribonucleoprotein complex
+GO:0033290	eukaryotic 48S preinitiation complex
+GO:0070993	translation preinitiation complex
+GO:0032040	small-subunit processome
+GO:0044422	organelle part
+GO:0044428	nuclear part
+GO:0005762	mitochondrial large ribosomal subunit
+GO:0031970	organelle envelope lumen
+GO:0005634	nucleus
+GO:0043234	protein complex
+GO:0043232	intracellular non-membrane-bounded organelle
+GO:0030529	intracellular ribonucleoprotein complex
+GO:0044452	nucleolar part
+GO:0098798	mitochondrial protein complex
+GO:0005758	mitochondrial intermembrane space
