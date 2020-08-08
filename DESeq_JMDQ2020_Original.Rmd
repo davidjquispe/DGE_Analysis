@@ -17,6 +17,7 @@ knitr::opts_chunk$set(error=FALSE, message=FALSE, warning=FALSE)
 
 The sea cucumber _Holothuria glaberrima_ has great regenerative capability after internal organs evisceration. In this case, we are analyzing data from mesentery regenerative tissue of 1 and 3 days post evisceration (1- and 3-DPE) in order to further understand the genes that are involved in the early stages of regeneration.
 
+
 ***
 
 # Process
